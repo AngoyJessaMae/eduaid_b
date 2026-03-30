@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--eduaid-primary: #3b82f6;
+		--eduaid-secondary: #f97316;
+		--eduaid-accent: #2563eb;
+		--eduaid-highlight: #fb923c;
+		--eduaid-bg: #eff6ff;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		@apply bg-primary-50 text-gray-900 antialiased;
+	}
+
+	a,
+	button,
+	input,
+	select,
+	textarea {
+		@apply transition duration-200;
+	}
+
+	a:focus-visible,
+	button:focus-visible,
+	input:focus-visible,
+	select:focus-visible,
+	textarea:focus-visible {
+		@apply outline-none ring-2 ring-primary-500 ring-offset-2;
+	}
+}
+
+@layer components {
+	.panel {
+		@apply bg-white rounded-xl shadow-sm border border-gray-100;
+	}
+
+	.panel-hover {
+		@apply panel hover:shadow-md hover:-translate-y-0.5;
+	}
+
+	.btn-primary {
+		@apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-semibold text-white bg-primary-600 hover:bg-primary-700;
+	}
+
+	.btn-secondary {
+		@apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-semibold text-white bg-secondary-500 hover:bg-secondary-600;
+	}
+
+	.btn-muted {
+		@apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-semibold text-gray-900 bg-gray-200 hover:bg-gray-300;
+	}
+
+	.form-control {
+		@apply w-full px-4 py-2 border-2 border-gray-300 rounded-lg bg-white focus:border-primary-500;
+	}
+
+	.table-shell {
+		@apply panel overflow-hidden;
+	}
+
+	.table-shell table {
+		@apply w-full;
+	}
+
+	.table-shell thead {
+		@apply bg-gray-50 border-b border-gray-200;
+	}
+
+	.table-shell tbody tr {
+		@apply border-b border-gray-100 hover:bg-primary-50/60;
+	}
+
+	.kpi-card {
+		@apply panel p-4;
+	}
+
+	.brand-logo-frame {
+		@apply overflow-hidden;
+	}
+
+	.brand-logo-image {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		object-position: left center;
+		transform: scale(2.2);
+		transform-origin: left center;
+	}
+
+	.brand-logo-frame-hero {
+		width: 280px;
+		height: 72px;
+	}
+
+	.brand-logo-frame-nav {
+		width: 190px;
+		height: 48px;
+	}
+
+	.brand-logo-frame-auth {
+		width: 275px;
+		height: 66px;
+	}
+}
+
+@media (min-width: 640px) {
+	@layer components {
+		.brand-logo-frame-hero {
+			width: 340px;
+			height: 86px;
+		}
+
+		.brand-logo-frame-nav {
+			width: 220px;
+			height: 54px;
+		}
+
+		.brand-logo-frame-auth {
+			width: 320px;
+			height: 76px;
+		}
+	}
+}
