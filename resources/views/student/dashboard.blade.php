@@ -4,6 +4,15 @@
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 py-8">
+    <!-- Logo Header -->
+    <div class="flex items-center gap-6 mb-8 pb-6 border-b-2 border-gray-200">
+        <img src="{{ asset('assets/logo.png') }}" alt="EduAid Logo" class="h-40 w-auto">
+        <div>
+            <h2 class="text-2xl font-bold text-gray-900">EduAid</h2>
+            <p class="text-sm text-gray-600">Personalized Learning Platform</p>
+        </div>
+    </div>
+
     <h1 class="text-4xl font-bold text-gray-900 mb-2">Welcome, {{ auth()->user()->name }}! 👋</h1>
     <p class="text-gray-600 mb-8">Your learning journey continues here</p>
 

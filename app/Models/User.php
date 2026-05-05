@@ -59,14 +59,6 @@ class User extends Authenticatable
     }
 
     /**
-     * Check if user is an admin.
-     */
-    public function isAdmin(): bool
-    {
-        return $this->role === 'admin';
-    }
-
-    /**
      * Get all pretest attempts for this user.
      */
     public function pretestAttempts()

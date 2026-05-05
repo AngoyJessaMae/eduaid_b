@@ -34,12 +34,6 @@
                         <a href="{{ route('student.reports.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('student.reports.*') ? 'bg-primary-100 text-primary-700 font-semibold' : 'text-gray-700 hover:text-primary-500 hover:bg-primary-50' }}">Reports</a>
                         <a href="{{ route('student.pretest.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('student.pretest.*') ? 'bg-primary-100 text-primary-700 font-semibold' : 'text-gray-700 hover:text-primary-500 hover:bg-primary-50' }}">Pretest</a>
                         <a href="{{ route('student.tutor.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('student.tutor.*') ? 'bg-primary-100 text-primary-700 font-semibold' : 'text-gray-700 hover:text-primary-500 hover:bg-primary-50' }}">AI Tutor</a>
-                    @elseif(auth()->user()->isAdmin())
-                        <a href="{{ route('admin.dashboard') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('admin.dashboard') ? 'bg-primary-100 text-primary-700 font-semibold' : 'text-gray-700 hover:text-primary-500 hover:bg-primary-50' }}">Admin</a>
-                        <a href="{{ route('admin.analytics') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('admin.analytics') ? 'bg-primary-100 text-primary-700 font-semibold' : 'text-gray-700 hover:text-primary-500 hover:bg-primary-50' }}">Analytics</a>
-                        <a href="{{ route('admin.subjects.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('admin.subjects.*') ? 'bg-primary-100 text-primary-700 font-semibold' : 'text-gray-700 hover:text-primary-500 hover:bg-primary-50' }}">Subjects</a>
-                        <a href="{{ route('admin.lessons.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('admin.lessons.*') ? 'bg-primary-100 text-primary-700 font-semibold' : 'text-gray-700 hover:text-primary-500 hover:bg-primary-50' }}">Lessons</a>
-                        <a href="{{ route('admin.quizzes.index') }}" class="px-3 py-2 rounded-lg {{ request()->routeIs('admin.quizzes.*') || request()->routeIs('admin.questions.*') ? 'bg-primary-100 text-primary-700 font-semibold' : 'text-gray-700 hover:text-primary-500 hover:bg-primary-50' }}">Quizzes</a>
                     @endif
                 @endauth
             </div>

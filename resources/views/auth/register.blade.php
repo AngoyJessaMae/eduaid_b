@@ -15,7 +15,7 @@
             <div class="inline-flex items-center justify-center gap-3 mb-6">
                 @if($hasLogo)
                     <div class="brand-logo-frame brand-logo-frame-auth">
-                        <img src="{{ asset($logoPath) }}" alt="{{ $brandName }} logo" class="brand-logo-image">
+                        <img src="{{ asset($logoPath) }}" alt="{{ $brandName }} logo" class="brand-logo-image" style="max-width: 180px; height: auto;">
                     </div>
                 @else
                     <x-brand-mark wrapperClass="w-12 h-12 bg-white rounded-lg flex items-center justify-center overflow-hidden" />

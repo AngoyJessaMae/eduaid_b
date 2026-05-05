@@ -1,1 +1,0 @@
-@extends('admin.subjects.form')

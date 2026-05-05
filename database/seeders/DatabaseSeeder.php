@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             PretestContentSeeder::class,
+            LessonSeeder::class,
+            QuizSeeder::class,
         ]);
 
         User::updateOrCreate([
@@ -27,6 +29,11 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
             'role' => 'student',
             'grade_level' => '7',
+        ]);
+
+        // Add student progress data
+        $this->call([
+            StudentProgressSeeder::class,
         ]);
     }
 }

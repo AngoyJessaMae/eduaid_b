@@ -88,7 +88,7 @@ class QuizController extends Controller
 
         $score = $total > 0 ? (int) round(($correct / $total) * 100) : 0;
 
-        QuizAttempt::create([
+        $attempt = QuizAttempt::create([
             'user_id' => auth()->id(),
             'quiz_id' => $quiz->id,
             'overall_score' => $score,

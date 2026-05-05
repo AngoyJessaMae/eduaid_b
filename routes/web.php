@@ -7,11 +7,6 @@ use App\Http\Controllers\Student\PretestController;
 use App\Http\Controllers\Student\QuizController as StudentQuizController;
 use App\Http\Controllers\Student\ReportController as StudentReportController;
 use App\Http\Controllers\Student\TutorController;
-use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
-use App\Http\Controllers\Admin\SubjectController;
-use App\Http\Controllers\Admin\LessonController as AdminLessonController;
-use App\Http\Controllers\Admin\QuizController;
-use App\Http\Controllers\Admin\QuestionController;
 use Illuminate\Support\Facades\Route;
 
 // Guest/unauthenticated routes
@@ -21,12 +16,6 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
-        $user = auth()->user();
-
-        if ($user && $user->isAdmin()) {
-            return redirect()->route('admin.dashboard');
-        }
-
         return redirect()->route('student.dashboard');
     })->name('dashboard');
 
@@ -69,44 +58,6 @@ Route::middleware(['auth', 'verified', 'role:student'])->group(function () {
     });
 });
 
-// Admin routes
-Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
-    Route::prefix('admin')->name('admin.')->group(function () {
-        // Dashboard
-        Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
-        Route::get('/analytics', [AdminDashboardController::class, 'analytics'])->name('analytics');
 
-        // Subjects
-        Route::resource('subjects', SubjectController::class);
-
-        // Lessons
-        Route::resource('lessons', AdminLessonController::class);
-        Route::post('/lessons/{lesson}/toggle-active', [AdminLessonController::class, 'toggleActive'])->name('lessons.toggle-active');
-
-        // Quizzes
-        Route::resource('quizzes', QuizController::class);
-        Route::post('/quizzes/{quiz}/toggle-active', [QuizController::class, 'toggleActive'])->name('quizzes.toggle-active');
-
-        // Questions - Pretest
-        Route::prefix('questions/pretest')->name('questions.pretest.')->group(function () {
-            Route::get('/', [QuestionController::class, 'pretestIndex'])->name('index');
-            Route::get('/create', [QuestionController::class, 'pretestCreate'])->name('create');
-            Route::post('/', [QuestionController::class, 'pretestStore'])->name('store');
-            Route::get('/{question}/edit', [QuestionController::class, 'pretestEdit'])->name('edit');
-            Route::patch('/{question}', [QuestionController::class, 'pretestUpdate'])->name('update');
-            Route::delete('/{question}', [QuestionController::class, 'pretestDestroy'])->name('destroy');
-        });
-
-        // Questions - Quiz
-        Route::prefix('quizzes/{quiz}/questions')->name('questions.quiz.')->group(function () {
-            Route::get('/', [QuestionController::class, 'quizIndex'])->name('index');
-            Route::get('/create', [QuestionController::class, 'quizCreate'])->name('create');
-            Route::post('/', [QuestionController::class, 'quizStore'])->name('store');
-            Route::get('/{question}/edit', [QuestionController::class, 'quizEdit'])->name('edit');
-            Route::patch('/{question}', [QuestionController::class, 'quizUpdate'])->name('update');
-            Route::delete('/{question}', [QuestionController::class, 'quizDestroy'])->name('destroy');
-        });
-    });
-});
 
 require __DIR__.'/auth.php';
